@@ -1,18 +1,22 @@
+%define name fonts-type1-greek
+%define version 2.0
+%define release %mkrel 3
+
 Summary:	Greek Type1 fonts
-Name:		fonts-type1-greek
-Version:	2.0
-Release:	2mdk
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
 
 Url:		http://iris.math.aegean.gr/kerkis/
 # date 2003-01-17
-Source0:	http://iris.math.aegean.gr/kerkis/Kerkis_for_X11.zip
+Source0:	http://iris.math.aegean.gr/kerkis/Kerkis_for_X11.tar.bz2
 
-License: distributable (Copyright (C) Department of Mathematics, Univeristy of Aegean. For use information check http://iris.math.aegean.gr/kerkis/)
+License: 	Distributable (Copyright (C) Department of Mathematics, University of Aegean. For use information check http://iris.math.aegean.gr/kerkis/)
 
 Group:		System/Fonts/Type1
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-root
-BuildRequires:	font-tools, lynx
+BuildRequires:	font-tools
 Requires(post):	chkfontpath
 Requires(postun):chkfontpath
 Requires(post):	fontconfig
@@ -29,12 +33,6 @@ or in the doc directory.
 %setup -q -n Kerkis_for_X11 
  
 %build
-
-if [ ! -r README ] ; then
-	echo -e "\nThis is a dump of the web page at" > README
-	echo -e "%{url}\n\n" >> README
-	lynx -dump "%{url}" >> README
-fi
 
 %install
 rm -fr %buildroot
@@ -73,7 +71,7 @@ rm -fr %buildroot
 
 %files
 %defattr(0644,root,root,0755)
-%doc README License.txt
+%doc License.txt
 %dir %_datadir/fonts/type1/greek
 %_datadir/fonts/type1/greek/*.pfb
 %_datadir/fonts/type1/greek/*.afm
