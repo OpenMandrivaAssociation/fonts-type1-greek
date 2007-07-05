@@ -1,6 +1,6 @@
 %define name fonts-type1-greek
 %define version 2.0
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary:	Greek Type1 fonts
 Name:		%{name}
@@ -17,8 +17,6 @@ Group:		System/Fonts/Type1
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	font-tools
-Requires(post):	chkfontpath
-Requires(postun):chkfontpath
 Requires(post):	fontconfig
 Requires(postun):fontconfig
 
@@ -52,17 +50,19 @@ install -m 0644 fonts.scale.new \
 (
 cd %buildroot/%_datadir/fonts/type1/greek
 cp fonts.scale fonts.dir
-) 
+)
+
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../..%_datadir/fonts/type1/greek \
+    %{buildroot}%_sysconfdir/X11/fontpath.d/type1-greek:pri=50
+
 
 %post
-[ -x %_sbindir/chkfontpath ] && %_sbindir/chkfontpath -q -a %_datadir/fonts/type1/greek
 [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 
 %postun
 # 0 means a real uninstall
 if [ "$1" = "0" ]; then
-   [ -x %_sbindir/chkfontpath ] && \
-   %_sbindir/chkfontpath -q -r %_datadir/fonts/type1/greek
    [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 fi
 
@@ -77,4 +77,5 @@ rm -fr %buildroot
 %_datadir/fonts/type1/greek/*.afm
 %config(noreplace) %_datadir/fonts/type1/greek/fonts.dir
 %config(noreplace) %_datadir/fonts/type1/greek/fonts.scale
+%_sysconfdir/X11/fontpath.d/type1-greek:pri=50
 
