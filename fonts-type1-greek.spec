@@ -15,7 +15,6 @@ License: 	Distributable (Copyright (C) Department of Mathematics, University of 
 
 Group:		System/Fonts/Type1
 BuildArch:	noarch
-BuildRoot:	%_tmppath/%name-%version-%release-root
 BuildRequires:	font-tools
 Requires(post):	fontconfig
 Requires(postun):fontconfig
