@@ -1,6 +1,6 @@
 %define name fonts-type1-greek
 %define version 2.0
-%define release %mkrel 6
+%define release %mkrel 7
 
 Summary:	Greek Type1 fonts
 Name:		%{name}
