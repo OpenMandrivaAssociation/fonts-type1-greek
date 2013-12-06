@@ -1,7 +1,7 @@
 Summary:	Greek Type1 fonts
 Name:		fonts-type1-greek
 Version:	2.0
-Release:	14
+Release:	15
 License: 	Distributable (Copyright (C) Department of Mathematics, University of Aegean. For use information check http://iris.math.aegean.gr/kerkis/)
 Group:		System/Fonts/Type1
 Url:		http://iris.math.aegean.gr/kerkis/
