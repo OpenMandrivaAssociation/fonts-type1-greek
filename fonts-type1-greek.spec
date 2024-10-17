@@ -4,7 +4,7 @@ Version:	2.0
 Release:	23
 License: 	Distributable (Copyright (C) Department of Mathematics, University of Aegean. For use information check http://iris.math.aegean.gr/kerkis/)
 Group:		System/Fonts/Type1
-Url:		http://iris.math.aegean.gr/kerkis/
+Url:		https://iris.math.aegean.gr/kerkis/
 # date 2003-01-17
 Source0:	http://iris.math.aegean.gr/kerkis/Kerkis_for_X11.tar.bz2
 BuildArch:	noarch
